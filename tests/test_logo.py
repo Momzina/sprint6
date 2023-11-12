@@ -1,4 +1,5 @@
 import allure
+
 from tests.data import Urls
 from pages.home_page import HomePage
 from locators.base_page_locators import BasePageLocators

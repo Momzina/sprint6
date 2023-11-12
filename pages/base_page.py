@@ -40,8 +40,15 @@ class BasePage:
         handles = self.driver.window_handles
         current_handle = self.driver.current_window_handle
         next_handle = handles[(handles.index(current_handle) + 1) % len(handles)]
+
+        # Ожидание появления нового окна
+        WebDriverWait(self.driver, 10).until(expected_conditions.number_of_windows_to_be(len(handles)))
+
+        # Переключение на новую вкладку
         self.driver.switch_to.window(next_handle)
-        time.sleep(10)
+
+        # Ожидание загрузки страницы в новой вкладке
+        WebDriverWait(self.driver, 10).until(expected_conditions.url_contains("https://dzen.ru/?yredirect=true"))
 
     @allure.step("Возврат на текущую страницу")
     def get_current_page_url(self):

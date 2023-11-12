@@ -34,6 +34,3 @@ class Data:
         (BasePageLocators.order_button_header, "Заказать в шапке страницы"),
         (HomePageLocators.order_button, "Заказать внизу страницы"),
     ]
-
-
-print(Answers.test_data[1])
